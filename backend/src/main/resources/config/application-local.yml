@@ -1,0 +1,15 @@
+spring:
+  # H2 for local development
+  datasource:
+    url: jdbc:h2:mem:jobtrackerdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  # Automatically creates or updates tables/columns based on your entities
+  jpa:
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
