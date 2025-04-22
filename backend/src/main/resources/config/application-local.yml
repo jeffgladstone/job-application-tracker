@@ -1,6 +1,7 @@
 spring:
   # H2 for local development
   datasource:
+    # url: jdbc:h2:file:./data/jobtracker # Use this to persist H2 data locally
     url: jdbc:h2:mem:jobtrackerdb
     driver-class-name: org.h2.Driver
     username: sa
@@ -9,6 +10,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
   h2:
     console:
       enabled: true
