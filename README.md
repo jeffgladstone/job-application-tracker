@@ -1,27 +1,60 @@
-# Job Application Tracker 💼
+# 💼 Job Application Tracker
 
-A full-stack web app to track and manage job applications.
-
-## 🔧 Tech Stack
-
-**Frontend:** Angular *(or React)*  
-**Backend:** Spring Boot (Java)  
-**Database:** H2 for local dev, PostgreSQL for deployment
+A full-stack web application to track and manage job applications using a modern tech stack.
 
 ---
 
-## 🖥 Features
+## 🔧 Tech Stack
+
+**Frontend:** React  
+**Backend:** Spring Boot (Java 21, Maven)  
+**Database:** H2 (local), PostgreSQL (production-ready)  
+**API Docs:** Swagger UI (Springdoc OpenAPI 3)
+
+---
+
+## ✨ Features
 
 - Add, edit, and delete job applications
 - Track application status: Applied, Interviewing, Offer, Rejected
 - Filter applications by status
-- Responsive UI and RESTful backend
+- RESTful API with Swagger UI docs
+- Profile-based environments: `local`, `prod`
+- Modern Java 21 setup with Lombok
 
 ---
 
-## 🛠 Local Setup
+## 🛠 Local Development Setup
 
-### Backend (Spring Boot)
+### ✅ Backend (Spring Boot)
+
 ```bash
 cd backend
-./mvnw spring-boot:run
+mvn spring-boot:run -Dspring-boot.run.profiles=local
+```
+- Access H2 Console:
+http://localhost:8080/h2-console
+
+- Access Swagger API Docs:
+http://localhost:8080/swagger-ui/index.html
+
+### ✅ Frontend (React)
+
+```bash
+cd frontend
+npm install
+npm start
+```
+Runs on http://localhost:3000 by default
+
+---
+
+## 🔥 Future Features
+
+- User authentication (JWT)
+- Interview reminders
+- Export to CSV or PDF
+- Resume upload & tagging
+
+## 📸 Screenshots
+(Adding some UI/API screenshots here  soon!)

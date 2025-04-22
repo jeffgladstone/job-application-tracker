@@ -1,0 +1,5 @@
+spring:
+  # Ensure schema matches entities
+  jpa:
+    hibernate:
+      ddl-auto: validate
