@@ -12,3 +12,10 @@ coverage:
         threshold: 1%
         if_not_found: success
         informational: false
+
+comment:
+  layout: "reach, diff, flags, files"
+  behavior: default
+  require_changes: true  # Only comment when coverage changes
+  branches:
+    - main
