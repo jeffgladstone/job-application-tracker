@@ -8,6 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Build the Spring Boot app
+RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Run the JAR
