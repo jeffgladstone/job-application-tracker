@@ -9,7 +9,8 @@ COPY . .
 
 # Build the Spring Boot app
 RUN chmod +x mvnw
-RUN ./mvnw clean package -DskipTests && mv target/job-application-tracker-*.jar target/app.jar
+RUN ./mvnw clean package -DskipTests && \
+    mv target/job-application-tracker-*.jar target/app.jar
 
 # Run the JAR
 CMD ["java", "-Dspring.profiles.active=prod", "-jar", "target/job-application-tracker.jar"]
