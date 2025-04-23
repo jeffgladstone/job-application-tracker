@@ -10,6 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: backend
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -28,7 +32,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Build and test
+      - name: Build and test backend
         run: mvn clean verify
 
       - name: Generate JaCoCo coverage report
