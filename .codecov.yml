@@ -1,0 +1,14 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 80%     # Required coverage across the whole project
+        threshold: 2%   # Allowable drop before it fails CI
+        if_not_found: success
+        informational: false
+    patch:
+      default:
+        target: 80%     # Coverage for new code in each PR
+        threshold: 1%
+        if_not_found: success
+        informational: false
