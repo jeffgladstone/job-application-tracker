@@ -1,5 +1,7 @@
 # 💼 Job Application Tracker
 
+![Code Coverage](https://codecov.io/gh/jeffgladstone/job-application-tracker/branch/main/graph/badge.svg)
+
 A full-stack web application to track and manage job applications using a modern tech stack.
 
 ---
