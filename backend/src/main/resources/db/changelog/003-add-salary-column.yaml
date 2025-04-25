@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-add-salary-column
+      author: Jeff Gladstone
+      changes:
+        - addColumn:
+            tableName: job_application
+            columns:
+              - column:
+                  name: salary_expectation
+                  type: INTEGER

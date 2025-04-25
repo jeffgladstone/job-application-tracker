@@ -22,6 +22,7 @@ public class JobApplication {
     private String companyName;
     private String role;
     private String location;
+    private Integer salaryExpectation;
     private LocalDate dateApplied;
     private String status;
 
