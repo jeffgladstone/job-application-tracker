@@ -21,6 +21,7 @@ public class JobApplication {
 
     private String companyName;
     private String role;
+    private String location;
     private LocalDate dateApplied;
     private String status;
 

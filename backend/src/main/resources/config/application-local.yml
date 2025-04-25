@@ -7,9 +7,6 @@ spring:
     username: sa
     password:
   jpa:
-    # Automatically creates or updates tables/columns based on your entities
-    hibernate:
-      ddl-auto: update
     database-platform: org.hibernate.dialect.H2Dialect
   h2:
     console:

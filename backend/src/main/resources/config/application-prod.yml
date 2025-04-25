@@ -4,12 +4,6 @@ spring:
     username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:password}
   jpa:
-    # Automatically creates or updates tables/columns based on your entities
-    hibernate:
-      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  sql:
-    init:
-      mode: never

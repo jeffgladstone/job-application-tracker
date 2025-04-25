@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-add-location-column
+      author: Jeff Gladstone
+      changes:
+        - addColumn:
+            tableName: job_application
+            columns:
+              - column:
+                  name: location
+                  type: VARCHAR(255)
