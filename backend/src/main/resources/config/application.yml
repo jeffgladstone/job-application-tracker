@@ -7,6 +7,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+  cache:
+    type: simple  # (default) uses ConcurrentHashMap
+
 info:
   app:
     name: Job Application Tracker

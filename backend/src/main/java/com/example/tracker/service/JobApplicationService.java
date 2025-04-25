@@ -3,6 +3,8 @@ package com.example.tracker.service;
 import com.example.tracker.model.JobApplication;
 import com.example.tracker.repository.JobApplicationRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,7 @@ public class JobApplicationService {
         this.repository = repository;
     }
 
+    @Cacheable("applications")
     public List<JobApplication> getAll() {
         log.info("Fetching all job applications");
         return repository.findAll();
@@ -28,6 +31,7 @@ public class JobApplicationService {
         return repository.findById(id);
     }
 
+    @CacheEvict(value = "applications", allEntries = true)
     public JobApplication save(JobApplication jobApplication) {
         if (jobApplication.getId() == null) {
             log.info("Creating new job application: {}", jobApplication);
@@ -37,6 +41,7 @@ public class JobApplicationService {
         return repository.save(jobApplication);
     }
 
+    @CacheEvict(value = "applications", allEntries = true)
     public void delete(Long id) {
         log.warn("Deleting job application with ID: {}", id);
         repository.deleteById(id);
