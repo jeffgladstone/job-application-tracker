@@ -12,3 +12,14 @@ spring:
     console:
       enabled: true
       path: /h2-console
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, env, liquibase
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
