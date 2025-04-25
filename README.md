@@ -52,7 +52,7 @@ A full-stack web application to help users track their job applications, built w
 - **Code Coverage:**
     - JaCoCo integrated into Maven
     - Coverage uploaded to Codecov
-    - ![Codecov Badge](https://codecov.io/gh/YOUR_USERNAME/job-application-tracker/branch/main/graph/badge.svg)
+    - ![Codecov Badge](https://codecov.io/gh/jeffgladstone/job-application-tracker/branch/main/graph/badge.svg)
 
 ---
 
