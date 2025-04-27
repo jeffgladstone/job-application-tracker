@@ -5,7 +5,7 @@ import StatsPage from "./pages/StatsPage";
 export default function App() {
   return (
     <Router>
-      <nav style={{ padding: "10px", backgroundColor: "#007bff" }}>
+      <nav>
         <Link to="/" style={{ color: "white", marginRight: "10px" }}>Home</Link>
         <Link to="/stats" style={{ color: "white" }}>Stats</Link>
       </nav>

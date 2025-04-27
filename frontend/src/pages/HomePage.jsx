@@ -48,8 +48,8 @@ export default function HomePage() {
     <div className="container">
       <Toast message={toastMessage} onClose={() => setToastMessage("")} />
       <h1>Job Application Tracker</h1>
-      <SearchBar setSearchQuery={setSearchQuery} />
       <ApplicationForm onSubmit={editingApplication ? handleUpdate : handleCreate} editingApplication={editingApplication} />
+      <SearchBar setSearchQuery={setSearchQuery} />
       <ApplicationList
         applications={filteredApplications}
         onEdit={setEditingApplication}
