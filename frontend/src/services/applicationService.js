@@ -1,4 +1,4 @@
-const API_URL = "/api/applications";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export async function getApplications() {
   const res = await fetch(API_URL);
