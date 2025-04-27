@@ -1,5 +1,7 @@
 package com.example.tracker.controller;
 
+import com.example.tracker.dto.JobApplicationDTO;
+import com.example.tracker.mapper.JobApplicationMapper;
 import com.example.tracker.model.JobApplication;
 import com.example.tracker.service.JobApplicationService;
 import org.springframework.web.bind.annotation.*;
@@ -12,30 +14,36 @@ import java.util.List;
 public class JobApplicationController {
 
     private final JobApplicationService service;
+    private final JobApplicationMapper mapper;
 
-    public JobApplicationController(JobApplicationService service) {
+    public JobApplicationController(JobApplicationService service, JobApplicationMapper mapper) {
         this.service = service;
+        this.mapper = mapper;
     }
 
     @GetMapping
-    public List<JobApplication> getAll() {
-        return service.getAll();
+    public List<JobApplicationDTO> getAll() {
+        List<JobApplication> applications = service.getAll();
+        return mapper.toDtoList(applications);
     }
 
     @GetMapping("/{id}")
-    public JobApplication getById(@PathVariable Long id) {
-        return service.getById(id).orElseThrow();
+    public JobApplicationDTO getById(@PathVariable Long id) {
+        JobApplication application = service.getById(id).orElseThrow();
+        return mapper.toDto(application);
     }
 
     @PostMapping
-    public JobApplication create(@RequestBody JobApplication jobApp) {
-        return service.save(jobApp);
+    public JobApplicationDTO create(@RequestBody JobApplicationDTO jobAppDTO) {
+        JobApplication application = service.save(mapper.toEntity(jobAppDTO));
+        return mapper.toDto(application);
     }
 
     @PutMapping("/{id}")
-    public JobApplication update(@PathVariable Long id, @RequestBody JobApplication updatedApp) {
-        updatedApp.setId(id);
-        return service.save(updatedApp);
+    public JobApplicationDTO update(@PathVariable Long id, @RequestBody JobApplicationDTO updatedAppDTO) {
+        updatedAppDTO.setId(id);
+        JobApplication application = service.save(mapper.toEntity(updatedAppDTO));
+        return mapper.toDto(application);
     }
 
     @DeleteMapping("/{id}")

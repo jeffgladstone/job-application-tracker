@@ -1,5 +1,7 @@
 package com.example.tracker.controller;
 
+import com.example.tracker.dto.JobApplicationDTO;
+import com.example.tracker.mapper.JobApplicationMapper;
 import com.example.tracker.model.JobApplication;
 import com.example.tracker.service.JobApplicationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,7 +19,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -31,53 +32,53 @@ class JobApplicationControllerTest {
     @MockBean
     private JobApplicationService service;
 
+    @MockBean
+    private JobApplicationMapper mapper;
+
     @Autowired
     private ObjectMapper objectMapper;
 
     @Test
     void shouldReturnAllApplications() throws Exception {
-        JobApplication app1 = new JobApplication();
-        app1.setCompanyName("OpenAI");
+        JobApplication entity = createSampleJobApplication();
+        JobApplicationDTO dto = createSampleJobApplicationDTO();
 
-        JobApplication app2 = new JobApplication();
-        app2.setCompanyName("Google");
-
-        when(service.getAll()).thenReturn(List.of(app1, app2));
+        when(service.getAll()).thenReturn(List.of(entity));
+        when(mapper.toDtoList(List.of(entity))).thenReturn(List.of(dto));
 
         mockMvc.perform(get("/api/applications"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(2))
-                .andExpect(jsonPath("$[0].companyName").value("OpenAI"));
+                .andExpect(jsonPath("$.length()").value(1))
+                .andExpect(jsonPath("$[0].companyName").value("Google"));
     }
 
     @Test
     void shouldReturnApplicationById() throws Exception {
-        JobApplication app = new JobApplication();
-        app.setId(1L);
-        app.setCompanyName("Netflix");
+        JobApplication entity = createSampleJobApplication();
+        JobApplicationDTO dto = createSampleJobApplicationDTO();
 
-        when(service.getById(1L)).thenReturn(Optional.of(app));
+        when(service.getById(1L)).thenReturn(Optional.of(entity));
+        when(mapper.toDto(entity)).thenReturn(dto);
 
         mockMvc.perform(get("/api/applications/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.companyName").value("Netflix"));
+                .andExpect(jsonPath("$.companyName").value("Google"));
     }
 
     @Test
     void shouldCreateNewApplication() throws Exception {
-        JobApplication app = new JobApplication();
-        app.setCompanyName("Amazon");
-        app.setRole("SWE");
-        app.setStatus("Applied");
-        app.setDateApplied(LocalDate.now());
+        JobApplicationDTO dto = createSampleJobApplicationDTO();
+        JobApplication entity = createSampleJobApplication();
 
-        when(service.save(any(JobApplication.class))).thenReturn(app);
+        when(service.save(entity)).thenReturn(entity);
+        when(mapper.toDto(entity)).thenReturn(dto);
+        when(mapper.toEntity(Mockito.any(JobApplicationDTO.class))).thenReturn(entity);
 
         mockMvc.perform(post("/api/applications")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(app)))
+                        .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.companyName").value("Amazon"));
+                .andExpect(jsonPath("$.companyName").value("Google"));
     }
 
     @Test
@@ -86,5 +87,31 @@ class JobApplicationControllerTest {
                 .andExpect(status().isOk());
 
         Mockito.verify(service).delete(5L);
+    }
+
+    private JobApplication createSampleJobApplication() {
+        return JobApplication.builder()
+                .id(1L)
+                .companyName("Google")
+                .role("Engineer")
+                .status("Applied")
+                .dateApplied(LocalDate.of(2025, 4, 25))
+                .notes("Cool role")
+                .location("Remote")
+                .salaryExpectation(150000)
+                .build();
+    }
+
+    private JobApplicationDTO createSampleJobApplicationDTO() {
+        return JobApplicationDTO.builder()
+                .id(1L)
+                .companyName("Google")
+                .role("Engineer")
+                .status("Applied")
+                .dateApplied(LocalDate.of(2025, 4, 25))
+                .notes("Cool role")
+                .location("Remote")
+                .salaryExpectation(150000)
+                .build();
     }
 }
