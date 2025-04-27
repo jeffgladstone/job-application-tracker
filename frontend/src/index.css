@@ -1,6 +1,6 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
   margin: 0;
   padding: 0;
 }
@@ -10,29 +10,57 @@ h1, h2 {
   color: #333;
 }
 
+nav {
+  background-color: #007bff;
+  padding: 10px 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 form {
   background: white;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 input, textarea, button {
   display: block;
   width: 100%;
   margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 8px;
+  margin-bottom: 15px;
+  padding: 10px;
   font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+input:focus, textarea:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
 button {
   background-color: #007bff;
   color: white;
   border: none;
+  font-weight: bold;
   cursor: pointer;
-  border-radius: 4px;
 }
 
 button:hover {
@@ -40,22 +68,29 @@ button:hover {
 }
 
 ul {
+  list-style: none;
   padding: 0;
 }
 
-li {
+.application-card {
   background: white;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
 
-input[type=\"text\"], input[type=\"date\"], input[type=\"number\"], textarea {
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.application-card strong {
+  font-size: 18px;
+  color: #007bff;
 }
 
-textarea {
-  resize: vertical;
+.application-card .buttons {
+  margin-top: 10px;
+}
+
+.application-card button {
+  width: auto;
+  display: inline-block;
+  margin-right: 10px;
 }
