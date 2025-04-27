@@ -1,3 +1,5 @@
+import ApplicationItem from "./ApplicationItem";
+
 export default function ApplicationList({ applications, onEdit, onDelete }) {
   return (
     <div>
@@ -7,13 +9,12 @@ export default function ApplicationList({ applications, onEdit, onDelete }) {
       ) : (
         <ul style={{ listStyle: "none", padding: 0 }}>
           {applications.map(app => (
-            <li key={app.id} style={{ marginBottom: "10px", borderBottom: "1px solid #ccc", paddingBottom: "10px" }}>
-              <strong>{app.companyName}</strong> - {app.role}
-              <div>
-                <button onClick={() => onEdit(app)}>Edit</button>
-                <button onClick={() => onDelete(app.id)} style={{ marginLeft: "10px" }}>Delete</button>
-              </div>
-            </li>
+            <ApplicationItem
+              key={app.id}
+              app={app}
+              onEdit={onEdit}
+              onDelete={onDelete}
+            />
           ))}
         </ul>
       )}
