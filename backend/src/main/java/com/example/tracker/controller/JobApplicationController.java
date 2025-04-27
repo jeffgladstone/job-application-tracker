@@ -28,7 +28,7 @@ public class JobApplicationController {
     }
 
     @GetMapping("/{id}")
-    public JobApplicationDTO getById(@PathVariable Long id) {
+    public JobApplicationDTO getById(@PathVariable("id") Long id) {
         JobApplication application = service.getById(id).orElseThrow();
         return mapper.toDto(application);
     }
@@ -40,14 +40,14 @@ public class JobApplicationController {
     }
 
     @PutMapping("/{id}")
-    public JobApplicationDTO update(@PathVariable Long id, @RequestBody JobApplicationDTO updatedAppDTO) {
+    public JobApplicationDTO update(@PathVariable("id") Long id, @RequestBody JobApplicationDTO updatedAppDTO) {
         updatedAppDTO.setId(id);
         JobApplication application = service.save(mapper.toEntity(updatedAppDTO));
         return mapper.toDto(application);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable("id") Long id) {
         service.delete(id);
     }
 }
