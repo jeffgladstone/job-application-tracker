@@ -19,17 +19,17 @@ A full-stack web application to help users track their job applications, built w
 
 ## 🛠 Backend Features
 
-| Feature                      | Details                                                |
-|------------------------------|--------------------------------------------------------|
-| Spring Boot REST API         | CRUD endpoints for job applications                    |
-| H2 Database                  | Lightweight DB for local dev                           |
-| PostgreSQL Integration       | For production deployments                             |
-| Liquibase Migrations         | Version-controlled database schema changes             |
-| Spring Boot Actuator         | App health checks, metrics, and environment info       |
-| JaCoCo Test Coverage         | Code coverage reports with Codecov badge               |
-| GitHub Actions CI            | Automated builds + tests on every push                 |
-| Basic Caching (Spring Cache) | Speeds up repeated `GET` operations                    |
-| Mapstruct Mappings           | For type-safe mapping between entities and DTOs |
+| Feature                      | Details                                          |
+|------------------------------|--------------------------------------------------|
+| Spring Boot REST API         | CRUD endpoints for job applications              |
+| H2 Database                  | Lightweight DB for local dev                     |
+| PostgreSQL Integration       | For production deployments                       |
+| Liquibase Migrations         | Version-controlled database schema changes       |
+| Spring Boot Actuator         | App health checks, metrics, and environment info |
+| JaCoCo Test Coverage         | Code coverage reports with Codecov badge         |
+| GitHub Actions CI            | Automated builds + tests on every push           |
+| Basic Caching (Spring Cache) | Speeds up repeated `GET` operations              |
+| Mapstruct Mappings           | For type-safe mapping between entities and DTOs  |
 
 ---
 
