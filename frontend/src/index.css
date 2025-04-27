@@ -33,12 +33,19 @@ nav a:hover {
 }
 
 form {
-  background: #bbfcbb; /* soft light green */
+  background: #bbfcbb;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
+
+form:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}
+
 
 input, textarea, button {
   display: block;
@@ -107,4 +114,17 @@ ul {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   z-index: 1000;
+}
+
+.application-card {
+  background: #bbfcbb;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* slightly softer shadow */
+  transition: box-shadow 0.3s ease;
+}
+
+.application-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* elevate on hover */
 }
