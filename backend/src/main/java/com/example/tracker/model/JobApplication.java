@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "job_applications")
 @Entity
 public class JobApplication {
 
@@ -29,4 +30,7 @@ public class JobApplication {
     @Column(length = 2000)
     private String notes;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

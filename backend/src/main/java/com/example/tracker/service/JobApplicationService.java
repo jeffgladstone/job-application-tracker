@@ -1,10 +1,13 @@
 package com.example.tracker.service;
 
 import com.example.tracker.model.JobApplication;
+import com.example.tracker.model.User;
 import com.example.tracker.repository.JobApplicationRepository;
+import com.example.tracker.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,21 +17,25 @@ import java.util.Optional;
 @Service
 public class JobApplicationService {
 
-    private final JobApplicationRepository repository;
+    private final JobApplicationRepository jobApplicationRepository;
+    private final UserRepository userRepository;
 
-    public JobApplicationService(JobApplicationRepository repository) {
-        this.repository = repository;
+    public JobApplicationService(JobApplicationRepository jobApplicationRepository, UserRepository userRepository) {
+        this.jobApplicationRepository = jobApplicationRepository;
+        this.userRepository = userRepository;
     }
 
     @Cacheable("applications")
     public List<JobApplication> getAll() {
         log.info("Fetching all job applications");
-        return repository.findAll();
+        User currentUser = getCurrentUser();
+        return jobApplicationRepository.findByUser(currentUser);
     }
 
     public Optional<JobApplication> getById(Long id) {
         log.info("Fetching job application with ID: {}", id);
-        return repository.findById(id);
+        User currentUser = getCurrentUser();
+        return jobApplicationRepository.findByIdAndUser(id, currentUser);
     }
 
     @CacheEvict(value = "applications", allEntries = true)
@@ -38,12 +45,20 @@ public class JobApplicationService {
         } else {
             log.info("Updating job application with ID {}: {}", jobApplication.getId(), jobApplication);
         }
-        return repository.save(jobApplication);
+        User currentUser = getCurrentUser();
+        jobApplication.setUser(currentUser);
+        return jobApplicationRepository.save(jobApplication);
     }
 
     @CacheEvict(value = "applications", allEntries = true)
     public void delete(Long id) {
         log.warn("Deleting job application with ID: {}", id);
-        repository.deleteById(id);
+        User currentUser = getCurrentUser();
+        jobApplicationRepository.findByIdAndUser(id, currentUser)
+                .ifPresent(jobApplicationRepository::delete);
+    }
+
+    private User getCurrentUser() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 }
