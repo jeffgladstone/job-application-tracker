@@ -7,6 +7,7 @@ import com.example.tracker.service.JobApplicationService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/applications")
@@ -29,7 +30,8 @@ public class JobApplicationController {
 
     @GetMapping("/{id}")
     public JobApplicationDTO getById(@PathVariable("id") Long id) {
-        JobApplication application = service.getById(id).orElseThrow();
+        JobApplication application = service.getById(id)
+                .orElseThrow(() -> new NoSuchElementException("Job Application with ID " + id + " not found"));
         return mapper.toDto(application);
     }
 
