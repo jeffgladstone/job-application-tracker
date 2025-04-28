@@ -6,44 +6,44 @@ A full-stack web application to help users track their job applications, built w
 
 ## 🚀 Tech Stack
 
-- **Frontend:** React, Axios
+- **Frontend:** React
 - **Backend:** Spring Boot, Maven
 - **Database:**
     - Local: H2 (in-memory)
     - Production: PostgreSQL (via Render)
 - **Deployment:**
     - Backend: Dockerized on Render
-    - Frontend: (Coming soon)
+    - Frontend: Static site on Render
 
 ---
 
 ## 🛠 Backend Features
 
-| Feature                      | Details                                          |
-|------------------------------|--------------------------------------------------|
-| Spring Boot REST API         | CRUD endpoints for job applications              |
-| H2 Database                  | Lightweight DB for local dev                     |
-| PostgreSQL Integration       | For production deployments                       |
-| Liquibase Migrations         | Version-controlled database schema changes       |
-| Spring Boot Actuator         | App health checks, metrics, and environment info |
-| JaCoCo Test Coverage         | Code coverage reports with Codecov badge         |
-| GitHub Actions CI            | Automated builds + tests on every push           |
-| Basic Caching (Spring Cache) | Speeds up repeated `GET` operations              |
-| Mapstruct Mappings           | For type-safe mapping between entities and DTOs  |
-| Controller Advice            | Globally catch exceptions across controllers     |
+| Feature                       | Details                                          |
+|-------------------------------|--------------------------------------------------|
+| Spring Boot REST API          | CRUD endpoints for job applications              |
+| H2 Database                   | Lightweight DB for local dev                     |
+| PostgreSQL Integration        | For production deployments                       |
+| Liquibase Migrations          | Version-controlled database schema changes       |
+| Spring Boot Actuator          | App health checks, metrics, and environment info |
+| JaCoCo Test Coverage          | Code coverage reports with Codecov badge         |
+| GitHub Actions CI             | Automated builds + tests on every push           |
+| Basic Caching (Spring Cache)  | Speeds up repeated `GET` operations              |
+| Mapstruct Mappings            | For type-safe mapping between entities and DTOs  |
+| @ControllerAdvice             | Globally catch exceptions across controllers     |
 
 ---
 
 ## 🗂 Key Endpoints
 
-| URL Path                      | Description |
-|--------------------------------|-------------|
-| `/api/applications`           | CRUD operations for job applications |
-| `/swagger-ui/index.html`       | OpenAPI/Swagger documentation |
-| `/actuator/health`             | Health status (via Actuator) |
-| `/actuator/info`               | App metadata |
-| `/actuator/metrics`            | JVM metrics, cache metrics, etc. |
-| `/actuator/caches`             | Shows active caches |
+| URL Path                        | Description                          |
+|---------------------------------|--------------------------------------|
+| `/api/applications`             | CRUD operations for job applications |
+| `/swagger-ui/index.html`        | OpenAPI/Swagger documentation        |
+| `/actuator/health`              | Health status (via Actuator)         |
+| `/actuator/info`                | App metadata                         |
+| `/actuator/metrics`             | JVM metrics, cache metrics, etc.     |
+| `/actuator/caches`              | Shows active caches                  |
 
 ---
 
@@ -83,6 +83,48 @@ A full-stack web application to help users track their job applications, built w
 
 ---
 
+## ⚡ Setup Instructions (Frontend)
+
+1. Clone the repository
+2. Go into the frontend folder:
+    ```bash
+    cd frontend
+    ```
+3. Install Node.js dependencies:
+    ```bash
+    npm install
+    ```
+4. Set environment variables
+- Create a .env file or a .env.development file in the project root.
+- Example:
+    ```bash
+    REACT_APP_API_URL=http://localhost:8080/api/applications
+    ```
+
+- For development, point to your locally running backend.
+- In production, set REACT_APP_API_URL to your deployed backend URL (e.g., on Render).
+
+5. Start the development server
+    ```bash
+    npm start
+    ```
+   This will start the frontend at:
+    ```bash
+    http://localhost:3000
+    ```
+    It will automatically proxy requests to your backend API.
+
+
+6. Build for Production
+
+- To create a production build:
+   ```bash
+   npm run build
+   ```
+
+   This generates static files in the /build folder, ready for hosting (e.g., Render static site hosting).
+---
+
 ## 🎯 Coming Soon
 
 - Frontend React deployment (Netlify/Vercel)
@@ -99,8 +141,9 @@ A full-stack web application to help users track their job applications, built w
 
 | Service       | URL |
 |---------------|-----|
-| Backend API   | https://job-application-backend.onrender.com |
+| Backend API   | https://job-application-tracker-9xyh.onrender.com/api/applications |
 | Swagger Docs  | https://job-application-backend.onrender.com/swagger-ui/index.html |
+| Frontend Site | https://job-application-tracker-1-15jv.onrender.com/ |
 
 ---
 
