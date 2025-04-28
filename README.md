@@ -30,6 +30,7 @@ A full-stack web application to help users track their job applications, built w
 | GitHub Actions CI            | Automated builds + tests on every push           |
 | Basic Caching (Spring Cache) | Speeds up repeated `GET` operations              |
 | Mapstruct Mappings           | For type-safe mapping between entities and DTOs  |
+| Controller Advice            | Globally catch exceptions across controllers     |
 
 ---
 
