@@ -54,25 +54,130 @@ export default function ApplicationList({ applications, onEdit, onDelete }) {
       <table style={tableStyle}>
         <thead>
           <tr style={theadRowStyle}>
-            <th style={thStyle} onClick={() => handleSort("companyName")}>Company {renderSortIcon("companyName")}</th>
-            <th style={thStyle} onClick={() => handleSort("role")}>Role {renderSortIcon("role")}</th>
-            <th style={thStyle} onClick={() => handleSort("status")}>Status {renderSortIcon("status")}</th>
-            <th style={thStyle} onClick={() => handleSort("dateApplied")}>Date Applied {renderSortIcon("dateApplied")}</th>
-            <th style={thStyle} onClick={() => handleSort("location")}>Location {renderSortIcon("location")}</th>
-            <th style={thStyle} onClick={() => handleSort("salaryExpectation")}>Salary {renderSortIcon("salaryExpectation")}</th>
+            <th
+              style={{
+                ...thStyle,
+                backgroundColor: sortField === "companyName" ? "#a3773f" : "#bf9463",
+                cursor: "pointer"
+              }}
+              onClick={() => handleSort("companyName")}
+            >
+              Company {renderSortIcon("companyName")}
+            </th>
+            <th
+              style={{
+                ...thStyle,
+                backgroundColor: sortField === "role" ? "#a3773f" : "#bf9463",
+                cursor: "pointer"
+              }}
+              onClick={() => handleSort("role")}
+            >
+              Role {renderSortIcon("role")}
+            </th>
+            <th
+              style={{
+                ...thStyle,
+                backgroundColor: sortField === "status" ? "#a3773f" : "#bf9463",
+                cursor: "pointer"
+              }}
+              onClick={() => handleSort("status")}
+            >
+              Status {renderSortIcon("status")}
+            </th>
+            <th
+              style={{
+                ...thStyle,
+                backgroundColor: sortField === "dateApplied" ? "#a3773f" : "#bf9463",
+                cursor: "pointer"
+              }}
+              onClick={() => handleSort("dateApplied")}
+            >
+              Date Applied {renderSortIcon("dateApplied")}
+            </th>
+            <th
+              style={{
+                ...thStyle,
+                backgroundColor: sortField === "location" ? "#a3773f" : "#bf9463",
+                cursor: "pointer"
+              }}
+              onClick={() => handleSort("location")}
+            >
+              Location {renderSortIcon("location")}
+            </th>
+            <th
+              style={{
+                ...thStyle,
+                backgroundColor: sortField === "salaryExpectation" ? "#a3773f" : "#bf9463",
+                cursor: "pointer"
+              }}
+              onClick={() => handleSort("salaryExpectation")}
+            >
+              Salary {renderSortIcon("salaryExpectation")}
+            </th>
             <th style={thStyle}>Notes</th>
             <th style={thStyle}>Actions</th>
           </tr>
         </thead>
         <tbody>
           {filteredApplications.map((app, index) => (
-            <tr key={app.id} style={getRowStyle(index)}>
-              <td style={tdStyle}>{app.companyName}</td>
-              <td style={tdStyle}>{app.role}</td>
-              <td style={tdStyle}>{app.status}</td>
-              <td style={tdStyle}>{app.dateApplied}</td>
-              <td style={tdStyle}>{app.location}</td>
-              <td style={tdStyle}>${app.salaryExpectation}</td>
+            <tr
+              key={app.id}
+              style={{
+                backgroundColor: index % 2 === 0 ? "#f5fff5" : "#eaffea",
+                textAlign: "center",
+                transition: "background-color 0.3s"
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#d2f5d2"}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = index % 2 === 0 ? "#f5fff5" : "#eaffea"}
+            >
+              <td
+                style={{
+                  ...tdStyle,
+                  backgroundColor: sortField === "companyName" ? "#eef9ee" : undefined
+                }}
+              >
+                {app.companyName}
+              </td>
+              <td
+                style={{
+                  ...tdStyle,
+                  backgroundColor: sortField === "role" ? "#eef9ee" : undefined
+                }}
+              >
+                {app.role}
+              </td>
+              <td
+                style={{
+                  ...tdStyle,
+                  backgroundColor: sortField === "status" ? "#eef9ee" : undefined
+                }}
+              >
+                {app.status}
+              </td>
+              <td
+                style={{
+                  ...tdStyle,
+                  backgroundColor: sortField === "dateApplied" ? "#eef9ee" : undefined
+                }}
+              >
+                {app.dateApplied}
+              </td>
+              <td
+                style={{
+                  ...tdStyle,
+                  backgroundColor: sortField === "location" ? "#eef9ee" : undefined
+                }}
+              >
+                {app.location}
+              </td>
+              <td
+                style={{
+                  ...tdStyle,
+                  backgroundColor: sortField === "salaryExpectation" ? "#eef9ee" : undefined
+                }}
+              >
+                ${app.salaryExpectation}
+              </td>
               <td style={tdStyle}>{app.notes}</td>
               <td style={tdStyle}>
                 <button onClick={() => onEdit(app)} style={editButtonStyle}>Edit</button>
