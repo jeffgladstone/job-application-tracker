@@ -1,5 +1,6 @@
 package com.example.tracker.controller;
 
+import com.example.tracker.dto.LoginRequestDTO;
 import com.example.tracker.dto.SignUpRequestDTO;
 import com.example.tracker.model.User;
 import com.example.tracker.security.JwtUtil;
@@ -19,25 +20,29 @@ public class AuthController {
     private final UserService userService;
     private final JwtUtil jwtUtil;
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthController(UserService userService, JwtUtil jwtUtil) {
+    public AuthController(UserService userService, JwtUtil jwtUtil, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.jwtUtil = jwtUtil;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String password) {
-        User user = userService.findByEmail(email)
+    public Map<String, String> login(@RequestBody LoginRequestDTO request) {
+        User user = userService.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("Invalid credentials"));
 
-        if (!user.getPassword().equals(password)) {
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new RuntimeException("Invalid credentials");
         }
 
         // Generate JWT
         String token = jwtUtil.generateToken(user.getEmail());
-        return token;
+
+        Map<String, String> response = new HashMap<>();
+        response.put("token", token);
+        return response;
     }
 
     @PostMapping("/signup")

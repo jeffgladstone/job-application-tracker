@@ -67,6 +67,7 @@ A full-stack web application to help users track their job applications, built w
     - `002-add-location-column`: Add `location` field
     - `003-add-salary-column`: Add `salary_expectation` field
     - `004-create-user-schema`: Create `users` table
+    - `005-add-user-id-to-job-applications`: Add `user_id` foreign key to `job_applications` table
 
 ---
 

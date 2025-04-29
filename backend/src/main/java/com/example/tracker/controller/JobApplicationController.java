@@ -4,6 +4,7 @@ import com.example.tracker.dto.JobApplicationDTO;
 import com.example.tracker.mapper.JobApplicationMapper;
 import com.example.tracker.model.JobApplication;
 import com.example.tracker.service.JobApplicationService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.NoSuchElementException;
 @RestController
 @RequestMapping("/api/applications")
 @CrossOrigin(origins = "http://localhost:3000") // React frontend
+@SecurityRequirement(name = "bearerAuth")
 public class JobApplicationController {
 
     private final JobApplicationService service;
