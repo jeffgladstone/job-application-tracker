@@ -3,7 +3,6 @@ package com.example.tracker.service;
 import com.example.tracker.model.JobApplication;
 import com.example.tracker.model.User;
 import com.example.tracker.repository.JobApplicationRepository;
-import com.example.tracker.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -18,11 +17,9 @@ import java.util.Optional;
 public class JobApplicationService {
 
     private final JobApplicationRepository jobApplicationRepository;
-    private final UserRepository userRepository;
 
-    public JobApplicationService(JobApplicationRepository jobApplicationRepository, UserRepository userRepository) {
+    public JobApplicationService(JobApplicationRepository jobApplicationRepository) {
         this.jobApplicationRepository = jobApplicationRepository;
-        this.userRepository = userRepository;
     }
 
     @Cacheable("applications")

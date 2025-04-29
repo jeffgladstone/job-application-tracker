@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<String> handleNoHandlerFoundException(NoHandlerFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body("NoHandlerFoundException ccurred");
+                .body("NoHandlerFoundException occurred");
     }
 
     @ExceptionHandler(Exception.class)

@@ -3,7 +3,6 @@ package com.example.tracker.service;
 import com.example.tracker.model.JobApplication;
 import com.example.tracker.model.User;
 import com.example.tracker.repository.JobApplicationRepository;
-import com.example.tracker.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,9 +28,6 @@ class JobApplicationServiceTest {
 
     @MockBean
     private JobApplicationRepository jobApplicationRepository;
-
-    @MockBean
-    private UserRepository userRepository;
 
     @BeforeEach
     void setUpSecurityContext() {
@@ -64,7 +60,7 @@ class JobApplicationServiceTest {
     void shouldSaveApplication() {
         // given
         JobApplication jobApp = new JobApplication();
-        jobApp.setCompanyName("OpenAI");
+        jobApp.setCompanyName("Meta");
         jobApp.setRole("Engineer");
         jobApp.setDateApplied(LocalDate.now());
         jobApp.setStatus("Applied");
@@ -77,7 +73,7 @@ class JobApplicationServiceTest {
         verify(jobApplicationRepository).save(captor.capture());
 
         JobApplication saved = captor.getValue();
-        assertThat(saved.getCompanyName()).isEqualTo("OpenAI");
+        assertThat(saved.getCompanyName()).isEqualTo("Meta");
     }
 
     @Test
