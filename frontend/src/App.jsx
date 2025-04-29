@@ -31,17 +31,17 @@ export default function App() {
           <>
             <Link to="/" style={{ color: "white", marginRight: "10px" }}>Home</Link>
             <Link to="/stats" style={{ color: "white", marginRight: "10px" }}>Stats</Link>
-            <button onClick={handleLogout} style={{
-              marginLeft: "10px",
-              padding: "6px 12px",
-              backgroundColor: "#e74c3c",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer"
-            }}>
+            <span
+              onClick={handleLogout}
+              style={{
+                color: "white",
+                marginRight: "10px",
+                cursor: "pointer",
+                textDecoration: "none"
+              }}
+            >
               Logout
-            </button>
+            </span>
           </>
         ) : (
           <>
@@ -50,6 +50,7 @@ export default function App() {
           </>
         )}
       </nav>
+
 
       <Routes>
         <Route path="/" element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />} />

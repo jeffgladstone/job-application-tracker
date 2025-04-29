@@ -28,7 +28,7 @@ export default function LoginPage({ onLoginSuccess }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "100px" }}>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", width: "300px" }}>
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", width: "300px", alignItems: "center" }}>
         <input
           type="email"
           placeholder="Email"
