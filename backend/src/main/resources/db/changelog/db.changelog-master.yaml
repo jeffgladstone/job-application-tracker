@@ -5,3 +5,5 @@ databaseChangeLog:
       file: db/changelog/002-add-location-column.yaml
   - include:
       file: db/changelog/003-add-salary-column.yaml
+  - include:
+      file: db/changelog/004-users-schema.yaml

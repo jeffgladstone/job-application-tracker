@@ -4,7 +4,7 @@ databaseChangeLog:
       author: Jeff Gladstone
       changes:
         - addColumn:
-            tableName: job_application
+            tableName: job_applications
             columns:
               - column:
                   name: salary_expectation

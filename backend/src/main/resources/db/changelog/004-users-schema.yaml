@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: 001-create-job-applications-table
+      id: 004-create-users-table
       author: Jeff Gladstone
       changes:
         - createTable:
-            tableName: job_applications
+            tableName: users
             columns:
               - column:
                   name: id
@@ -12,18 +12,23 @@ databaseChangeLog:
                   autoIncrement: true
                   constraints:
                     primaryKey: true
+                    nullable: false
+
               - column:
-                  name: company_name
+                  name: email
                   type: VARCHAR(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+
               - column:
-                  name: role
+                  name: password
                   type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
               - column:
-                  name: date_applied
-                  type: DATE
-              - column:
-                  name: status
+                  name: name
                   type: VARCHAR(255)
-              - column:
-                  name: notes
-                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false

@@ -6,7 +6,7 @@ A full-stack web application to help users track their job applications, built w
 
 ## 🚀 Tech Stack
 
-- **Frontend:** React
+- **Frontend:** React, Axios
 - **Backend:** Spring Boot, Maven
 - **Database:**
     - Local: H2 (in-memory)
@@ -19,18 +19,19 @@ A full-stack web application to help users track their job applications, built w
 
 ## 🛠 Backend Features
 
-| Feature                       | Details                                          |
-|-------------------------------|--------------------------------------------------|
-| Spring Boot REST API          | CRUD endpoints for job applications              |
-| H2 Database                   | Lightweight DB for local dev                     |
-| PostgreSQL Integration        | For production deployments                       |
-| Liquibase Migrations          | Version-controlled database schema changes       |
-| Spring Boot Actuator          | App health checks, metrics, and environment info |
-| JaCoCo Test Coverage          | Code coverage reports with Codecov badge         |
-| GitHub Actions CI             | Automated builds + tests on every push           |
-| Basic Caching (Spring Cache)  | Speeds up repeated `GET` operations              |
-| Mapstruct Mappings            | For type-safe mapping between entities and DTOs  |
-| @ControllerAdvice             | Globally catch exceptions across controllers     |
+| Feature                      | Details                                          |
+|------------------------------|--------------------------------------------------|
+| Spring Boot REST API         | CRUD endpoints for job applications              |
+| H2 Database                  | Lightweight DB for local dev                     |
+| PostgreSQL Integration       | For production deployments                       |
+| Liquibase Migrations         | Version-controlled database schema changes       |
+| Spring Boot Actuator         | App health checks, metrics, and environment info |
+| JaCoCo Test Coverage         | Code coverage reports with Codecov badge         |
+| GitHub Actions CI            | Automated builds + tests on every push           |
+| Basic Caching (Spring Cache) | Speeds up repeated `GET` operations              |
+| Mapstruct Mappings           | For type-safe mapping between entities and DTOs  |
+| @ControllerAdvice            | Globally catch exceptions across controllers     |
+| JWT Authentication           | Stateless, token-based security                  |
 
 ---
 
@@ -62,9 +63,10 @@ A full-stack web application to help users track their job applications, built w
 
 - All schema changes are managed via Liquibase YAML changelogs.
 - Migration History:
-    - `001-initial-schema`: Create `job_application` table
+    - `001-initial-schema`: Create `job_applications` table
     - `002-add-location-column`: Add `location` field
     - `003-add-salary-column`: Add `salary_expectation` field
+    - `004-create-user-schema`: Create `users` table
 
 ---
 
@@ -149,4 +151,4 @@ A full-stack web application to help users track their job applications, built w
 
 ## 🧠 Author
 
-> Built by Jeff G. — Software Engineer passionate about full-stack development and clean architecture 🚀
+> Built by Jeff Gladstone — Software Engineer passionate about full-stack development and clean architecture 🚀

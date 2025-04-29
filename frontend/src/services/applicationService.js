@@ -1,28 +1,19 @@
-const API_URL = process.env.REACT_APP_API_URL;
+// src/services/applicationService.js
+import axiosInstance from "./axiosInstance";
 
 export async function getApplications() {
-  const res = await fetch(API_URL);
-  return await res.json();
+  const res = await axiosInstance.get("/");
+  return res.data;
 }
 
 export async function createApplication(application) {
-  await fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(application)
-  });
+  await axiosInstance.post("/", application);
 }
 
 export async function updateApplication(application) {
-  await fetch(`${API_URL}/${application.id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(application)
-  });
+  await axiosInstance.put(`/${application.id}`, application);
 }
 
 export async function deleteApplication(id) {
-  await fetch(`${API_URL}/${id}`, {
-    method: "DELETE"
-  });
+  await axiosInstance.delete(`/${id}`);
 }

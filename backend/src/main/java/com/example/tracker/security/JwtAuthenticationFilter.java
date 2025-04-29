@@ -40,13 +40,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         jwt = authHeader.substring(7);
-        email = jwtUtil.extractEmail(jwt);
+        try {
+            email = jwtUtil.extractEmail(jwt);
+        } catch (Exception e) {
+            filterChain.doFilter(request, response);
+            return;
+        }
 
         if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            var user = userService.findByEmail(email)
-                    .orElseThrow(() -> new RuntimeException("User not found"));
+            var userOpt = userService.findByEmail(email);
 
-            if (jwtUtil.isTokenValid(jwt)) {
+            if (userOpt.isPresent() && jwtUtil.isTokenValid(jwt)) {
+                var user = userOpt.get();
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         user, null, null
                 );
@@ -57,8 +62,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
+            // If user not found, we just proceed without setting authentication
         }
 
         filterChain.doFilter(request, response);
     }
+
+
 }

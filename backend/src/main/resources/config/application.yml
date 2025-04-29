@@ -18,3 +18,8 @@ info:
     version: 1.0.0
 cors:
   allowed-origins: http://localhost:3000
+logging:
+  level:
+    org.springframework.security: DEBUG
+    web: DEBUG
+    root: INFO
