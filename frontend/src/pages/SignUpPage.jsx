@@ -12,7 +12,8 @@ export default function SignUpPage({ onSignUpSuccess }) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/api/auth/signup", {
+      const baseUrl = ${process.env.REACT_APP_API_URL} || 'http://localhost:8080';
+      const response = await axios.post(`${baseUrl}/api/auth/signup` {
         name,
         email,
         password,

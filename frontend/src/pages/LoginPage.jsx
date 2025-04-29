@@ -13,7 +13,8 @@ export default function LoginPage({ onLoginSuccess }) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/api/auth/login", {
+      const baseUrl = ${process.env.REACT_APP_API_URL} || 'http://localhost:8080';
+      const response = await axios.post(`${baseUrl}/api/auth/login` {
         email,
         password,
       });
