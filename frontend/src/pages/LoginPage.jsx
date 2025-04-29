@@ -54,6 +54,9 @@ export default function LoginPage({ onLoginSuccess }) {
         </button>
       </form>
       {errorMessage && <p style={{ color: "red", marginTop: "10px" }}>{errorMessage}</p>}
+      <p style={{ fontSize: "16px", position: "fixed", bottom: "25px", padding: "20px", textAlign: "center" }}>
+        (Server spins down with inactivity, which can delay requests by 50 seconds or more)
+      </p>
     </div>
   );
 }
