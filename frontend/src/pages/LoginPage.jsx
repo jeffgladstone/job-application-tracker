@@ -1,5 +1,3 @@
-// src/pages/LoginPage.jsx
-
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -54,9 +52,14 @@ export default function LoginPage({ onLoginSuccess }) {
         </button>
       </form>
       {errorMessage && <p style={{ color: "red", marginTop: "10px" }}>{errorMessage}</p>}
-      <p style={{ fontSize: "16px", position: "fixed", bottom: "25px", padding: "20px", textAlign: "center" }}>
-        (Server spins down with inactivity, which can delay requests by 50 seconds or more)
-      </p>
+      <div>
+        {process.env.REACT_APP_API_URL === "https://job-application-tracker-9xyh.onrender.com/api"
+          ? <p style={{ fontSize: "18px", position: "fixed", bottom: "25px", padding: "20px", textAlign: "center" }}>
+              Server spins down with inactivity, which can delay requests by 50 seconds or more.
+            </p>
+          : null
+        }
+      </div>
     </div>
   );
 }
