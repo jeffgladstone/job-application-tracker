@@ -4,9 +4,9 @@ A full-stack web application to help users track their job applications, built w
 
 ---
 
-## 🚀 Tech Stack
+## 🖥️ Tech Stack
 
-- **Frontend:** React, Axios
+- **Frontend:** React
 - **Backend:** Spring Boot, Maven
 - **Database:**
     - Local: H2 (in-memory)
@@ -14,6 +14,16 @@ A full-stack web application to help users track their job applications, built w
 - **Deployment:**
     - Backend: Dockerized on Render
     - Frontend: Static site on Render
+
+---
+
+## 🚀 Live Demo
+
+| Service       | URL                                                                     |
+|---------------|-------------------------------------------------------------------------|
+| Frontend Site | https://job-application-tracker-1-15jv.onrender.com/                    |
+| Backend API   | https://job-application-tracker-9xyh.onrender.com/api/applications      |
+| Swagger Docs  | https://job-application-tracker-9xyh.onrender.com/swagger-ui/index.html |
 
 ---
 
@@ -35,19 +45,6 @@ A full-stack web application to help users track their job applications, built w
 
 ---
 
-## 🗂 Key Endpoints
-
-| URL Path                        | Description                          |
-|---------------------------------|--------------------------------------|
-| `/api/applications`             | CRUD operations for job applications |
-| `/swagger-ui/index.html`        | OpenAPI/Swagger documentation        |
-| `/actuator/health`              | Health status (via Actuator)         |
-| `/actuator/info`                | App metadata                         |
-| `/actuator/metrics`             | JVM metrics, cache metrics, etc.     |
-| `/actuator/caches`              | Shows active caches                  |
-
----
-
 ## 🧪 Testing and Code Quality
 
 - **Unit Tests:** JUnit5 + Mockito for service layer
@@ -66,7 +63,7 @@ A full-stack web application to help users track their job applications, built w
     - `001-initial-schema`: Create `job_applications` table
     - `002-add-location-column`: Add `location` field
     - `003-add-salary-column`: Add `salary_expectation` field
-    - `004-create-user-schema`: Create `users` table
+    - `004-users-schema`: Create `users` table
     - `005-add-user-id-to-job-applications`: Add `user_id` foreign key to `job_applications` table
 
 ---
@@ -130,23 +127,11 @@ A full-stack web application to help users track their job applications, built w
 
 ## 🎯 Coming Soon
 
-- Frontend React deployment (Netlify/Vercel)
-- User authentication (JWT)
-- Interview reminders
+- Interview reminders (Scheduler + Email sender)
 - Export to CSV or PDF
 - Resume upload & tagging
-- Admin role + controller
+- Admin role + controller endpoints
 - Backend validation (@Valid annotations)
-
----
-
-# 🚀 Live Demo
-
-| Service       | URL |
-|---------------|-----|
-| Backend API   | https://job-application-tracker-9xyh.onrender.com/api/applications |
-| Swagger Docs  | https://job-application-backend.onrender.com/swagger-ui/index.html |
-| Frontend Site | https://job-application-tracker-1-15jv.onrender.com/ |
 
 ---
 
