@@ -12,14 +12,14 @@ export default function SignUpPage({ onSignUpSuccess }) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const baseUrl = ${process.env.REACT_APP_API_URL} || 'http://localhost:8080';
-      const response = await axios.post(`${baseUrl}/api/auth/signup` {
+      const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+      const response = await axios.post(`${baseUrl}/api/auth/signup`, {
         name,
         email,
         password,
       });
 
-      const token = response.data.token; // Assuming backend returns { token: "..." }
+      const token = response.data.token;
       localStorage.setItem("token", token);
       onSignUpSuccess();
       navigate("/");
