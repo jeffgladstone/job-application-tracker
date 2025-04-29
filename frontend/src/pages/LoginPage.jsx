@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage({ onLoginSuccess }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,6 +21,7 @@ export default function LoginPage({ onLoginSuccess }) {
       const token = response.data.token; // assumes backend sends { token: "..." }
       localStorage.setItem("token", token);
       onLoginSuccess();
+      navigate("/");
     } catch (error) {
       console.error(error);
       setErrorMessage("Login failed. Please check your credentials.");

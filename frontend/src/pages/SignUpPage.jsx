@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUpPage({ onSignUpSuccess }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -21,6 +23,7 @@ export default function SignUpPage({ onSignUpSuccess }) {
       const token = response.data.token; // Assuming backend returns { token: "..." }
       localStorage.setItem("token", token);
       onSignUpSuccess();
+      navigate("/");
     } catch (error) {
       console.error(error);
       setErrorMessage("Signup failed. Please try again.");
