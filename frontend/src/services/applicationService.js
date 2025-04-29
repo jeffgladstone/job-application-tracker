@@ -1,4 +1,3 @@
-// src/services/applicationService.js
 import axiosInstance from "./axiosInstance";
 
 export async function getApplications() {
