@@ -27,6 +27,17 @@ A full-stack web application to help users track their job applications, built w
 
 ---
 
+## 🧪 Testing and Code Quality
+
+- **Unit Tests:** JUnit5 + Mockito for service layer
+- **Integration Tests:** MockMvc for controller layer
+- **Code Coverage:**
+    - JaCoCo integrated into Maven
+    - Coverage uploaded to Codecov
+    - ![Codecov Badge](https://codecov.io/gh/jeffgladstone/job-application-tracker/branch/main/graph/badge.svg)
+
+---
+
 ## 🛠 Backend Features
 
 | Feature                      | Details                                          |
@@ -42,17 +53,6 @@ A full-stack web application to help users track their job applications, built w
 | Mapstruct Mappings           | For type-safe mapping between entities and DTOs  |
 | @ControllerAdvice            | Globally catch exceptions across controllers     |
 | JWT Authentication           | Stateless, token-based security                  |
-
----
-
-## 🧪 Testing and Code Quality
-
-- **Unit Tests:** JUnit5 + Mockito for service layer
-- **Integration Tests:** MockMvc for controller layer
-- **Code Coverage:**
-    - JaCoCo integrated into Maven
-    - Coverage uploaded to Codecov
-    - ![Codecov Badge](https://codecov.io/gh/jeffgladstone/job-application-tracker/branch/main/graph/badge.svg)
 
 ---
 
