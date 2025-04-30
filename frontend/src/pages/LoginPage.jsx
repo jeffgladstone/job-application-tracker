@@ -16,7 +16,7 @@ export default function LoginPage({ onLoginSuccess }) {
     setErrorMessage("");
     try {
       const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:8080';
-      const response = await axios.post(`${baseUrl}/api/auth/login`, {
+      const response = await axios.post(`${baseUrl}/auth/login`, {
         email,
         password,
       });
