@@ -22,7 +22,7 @@ public class JobApplicationService {
         this.jobApplicationRepository = jobApplicationRepository;
     }
 
-    @Cacheable("applications")
+    @Cacheable(value = "applications", key = "#root.authentication.name")
     public List<JobApplication> getAll() {
         log.info("Fetching all job applications");
         User currentUser = getCurrentUser();
