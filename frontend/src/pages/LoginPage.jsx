@@ -27,6 +27,8 @@ export default function LoginPage({ onLoginSuccess }) {
     }
   }
 
+  const isProduction = process.env.NODE_ENV === "production";
+
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "100px" }}>
       <h1>Login</h1>
@@ -52,14 +54,11 @@ export default function LoginPage({ onLoginSuccess }) {
         </button>
       </form>
       {errorMessage && <p style={{ color: "red", marginTop: "10px" }}>{errorMessage}</p>}
-      <div>
-        {process.env.REACT_APP_API_URL === "https://job-application-tracker-9xyh.onrender.com/api"
-          ? <p style={{ fontSize: "18px", position: "fixed", bottom: "25px", padding: "20px", textAlign: "center" }}>
-              Server spins down with inactivity, which can delay requests by 50 seconds or more.
-            </p>
-          : null
-        }
-      </div>
+      {isProduction && (
+        <footer style={{ textAlign: "center", padding: "10px", fontSize: "13px", color: "#555" }}>
+          Server spins down with inactivity, which can delay requests by 50 seconds or more.
+        </footer>
+      )}
     </div>
   );
 }
