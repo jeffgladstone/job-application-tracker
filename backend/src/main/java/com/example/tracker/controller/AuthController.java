@@ -14,7 +14,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:3000") // allow React frontend to call
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "https://job-application-tracker-1-15jv.onrender.com/"
+})
 public class AuthController {
 
     private final UserService userService;

@@ -12,7 +12,10 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/applications")
-@CrossOrigin(origins = "http://localhost:3000") // React frontend
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "https://job-application-tracker-1-15jv.onrender.com/"
+})
 @SecurityRequirement(name = "bearerAuth")
 public class JobApplicationController {
 
