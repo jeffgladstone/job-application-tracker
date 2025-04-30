@@ -22,7 +22,8 @@ public class JobApplicationService {
         this.jobApplicationRepository = jobApplicationRepository;
     }
 
-    @Cacheable(value = "applications", key = "#root.authentication.name")
+    @Cacheable(value = "applications",
+            key = "T(org.springframework.security.core.context.SecurityContextHolder).getContext().getAuthentication()?.name")
     public List<JobApplication> getAll() {
         log.info("Fetching all job applications");
         User currentUser = getCurrentUser();
